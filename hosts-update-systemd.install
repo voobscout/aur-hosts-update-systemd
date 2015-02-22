@@ -1,0 +1,28 @@
+post_install() {
+echo -e "\033[32;1mInstalled 'hosts-update' systemd timer unit\033[0m"
+echo -e "\033[31;1msudo systemctl enable hosts-update.timer\033[0m"
+systemctl enable hosts-update.timer
+echo -e "\033[31;1msudo systemctl start hosts-update.timer\033[0m"
+systemctl start hosts-update.timer
+}
+
+pre_upgrade() {
+echo -e "\033[31;1mStopping hosts-update.timer...\033[0m"
+systemctl stop hosts-update.timer
+}
+
+post_upgrade() {
+echo -e "\033[32;1mStarting hosts-update.timer...\033[0m"
+systemctl start hosts-update.timer
+}
+
+pre_remove() {
+echo -e "\033[31;1mStopping hosts-update.timer...\033[0m"
+systemctl stop hosts-update.timer
+echo -e "\033[31;1mDisabling hosts-update.timer...\033[0m"
+systemctl disable hosts-update.timer
+}
+
+post_remove() {
+echo -e "\033[31;1mhosts-update.timer removed!\033[0m"
+}

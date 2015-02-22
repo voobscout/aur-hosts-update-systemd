@@ -1,0 +1,11 @@
+[Unit]
+Description=AUR/hosts-update - Inject http://winhelp2002.mvps.org/hosts.txt
+
+[Timer]
+OnBootSec=5min
+OnCalendar=daily
+AccuracySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

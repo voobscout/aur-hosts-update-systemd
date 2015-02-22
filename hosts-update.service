@@ -1,0 +1,10 @@
+[Unit]
+Description=AUR/hosts-update - Inject http://winhelp2002.mvps.org/hosts.txt
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/hosts-update
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
